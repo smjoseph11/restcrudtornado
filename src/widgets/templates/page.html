@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+<form action='/toz' method='post' >
+    {% raw xsrf_form_html() %}
+    Nom
+    <input type='text' name='nom'>
+    Prenom
+    <input type='text' name='prenom'>
+    Age
+    <input type="number" name='age'>
+    <input type='submit'>
+    
+</form>
+
+
+</body>
+</html>
