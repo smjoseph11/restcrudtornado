@@ -1,5 +1,5 @@
 import datetime as dt
-from sqlalchemy import Column, Integer, String, DateTime 
+from sqlalchemy import Column, Integer, String, DateTime
 
 from sqlalchemy.sql import func
 
@@ -19,7 +19,7 @@ class Widget(Base):
     number_of_parts = Column(Integer)
     created_date = Column(DateTime(timezone=True), server_default = func.now())
     updated_date = Column(DateTime(timezone=True), onupdate=func.now())
-    
+
     def __init__(self, name, number_of_parts, created_date:Optional[dt.datetime]=None, updated_date:Optional[dt.datetime]=None,):
         self.name = name
         self.number_of_parts = number_of_parts

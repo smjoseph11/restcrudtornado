@@ -19,7 +19,6 @@ class WidgetHandler(RequestHandler):
         results = self.session.query(Widget).all()
         modded_results = []
         for res in results:
-            breakpoint()
             res.__dict__.pop('_sa_instance_state')
             stringified_res = json.dumps(res.__dict__, default=str)
             modded_results.append(stringified_res)
@@ -31,5 +30,10 @@ class WidgetHandler(RequestHandler):
         for k in request_dict:
             if k not in acceptable_keys:
                 raise tornado.web.HTTPError(400, log_message="You have supplied a payload with unexpected fields")
-            
-        self.write({'message': json.loads(self.request.body)})
+        if 'name' and 'number_of_parts' in request_dict.keys():
+            widget = Widget(name=request_dict['name'],
+            number_of_parts=request_dict['number_of_parts'])
+            self.session.add(widget)
+        else:
+            raise tornado.web.HTTPError(400, log_message="You have supplied a payload without a required field")
+        self.write({'message': f"added {request_dict} to repo"})
