@@ -1,26 +1,28 @@
 #!/usr/bin/env python
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
-import tornado.web
 import tornado.httpserver
 import tornado.ioloop
+import tornado.web
 from tornado.options import define, options
-import handlers
-import os
-from repo import Session
+
+from widgets import handlers
+from widgets.repo import Session
 
 define("port", default=8000, type=int)
 
 urls = [
-tornado.web.url(r"/widget/\w*", handlers.WidgetHandler, dict(session=Session))
+    tornado.web.url(r"/widget", handlers.WidgetGetPostHandler, dict(session=Session)),
+    tornado.web.url(
+        r"/widget/(\w+)", handlers.WidgetDeleteHandler, dict(session=Session)
+    ),
 ]
 
-settings = dict({
-    "cookie_secret": str(os.urandom(45)),
-    "xsrf_cookies": True,
-    "debug": False,
-    "gzip": True,
-})
+settings = dict(
+    {
+        "debug": True,
+    }
+)
 
 application = tornado.web.Application(urls, **settings)
 

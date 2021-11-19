@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "widgets-api-service"
+version = "0.1.0"
+description = ""
+authors = ["Stanlin Joseph <smjoseph11@gmail.com>"]
+readme = "README.md"
+repository = ""
+packages = [
+	{include = "widgets", from = "src"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.6.2"
+tornado = "^6.1"
+SQLAlchemy = "^1.4.27"
+pre-commit = "^2.15.0"
+black = "^21.11b1"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+bandit = "^1.7.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-pythonpath = "^0.7.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
