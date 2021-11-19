@@ -19,8 +19,8 @@ class Widget(Base):
 
     def __init__(
         self,
-        name,
-        number_of_parts,
+        name: str,
+        number_of_parts: int,
         created_date: Optional[dt.datetime] = None,
         updated_date: Optional[dt.datetime] = None,
     ):

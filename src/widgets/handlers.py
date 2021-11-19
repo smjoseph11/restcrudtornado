@@ -52,7 +52,7 @@ class WidgetDeleteHandler(RequestHandler):
         self.session = session()
 
     # DELETE
-    def delete(self, name):
+    def delete(self, name: str):
         query = self.session.query(Widget).filter_by(name=name)
         if query.all() == []:
             raise tornado.web.HTTPError(
@@ -66,7 +66,7 @@ class WidgetDeleteHandler(RequestHandler):
         self.session.commit()
 
     # READ
-    def get(self, name):
+    def get(self, name: str):
         result = self.session.query(Widget).filter_by(name=name).all()
         if result == []:
             raise tornado.web.HTTPError(
@@ -81,7 +81,7 @@ class WidgetDeleteHandler(RequestHandler):
         self.write({"result": stringified_res})
 
     # UPDATE
-    def put(self, name):
+    def put(self, name: str):
         query = self.session.query(Widget).filter_by(name=name).all()
         if query == []:
             raise tornado.web.HTTPError(
