@@ -18,6 +18,7 @@ Install poetry in the system `site_packages`
 1. Clone the repository.
     
     >git clone git@github.com:smjoseph11/restcrudtornado.git
+    
     >cd restcrudtornado
 
 2. Install the dependencies
@@ -49,21 +50,20 @@ ___
     GET(list): ex. GET localhost:8000/widgets
     GET(read): ex. GET localhost:8000/widgets/test_widget
     POST(create): ex. POST localhost:8000/widgets
-        
-        ```json 
-        {
-            "name":"test_widget",
-            "number_of_parts": 1
-        }
-        ```
+```json 
+   {
+    "name":"test_widget",
+    "number_of_parts": 1
+   }
+
+```
 
     PUT(update): ex. PUT localhost:8000/widgets/test_widget
 
-        ```json 
-        {
-            "name":"test_widget",
-            "number_of_parts": 1
-        }
-        ```
+```json 
+{
+    "number_of_parts": 2
+}
+```
 
     DELETE(delete): ex. DELETE localhost:8000/widgets/test_widget
